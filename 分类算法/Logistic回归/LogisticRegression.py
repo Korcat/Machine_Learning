@@ -33,7 +33,7 @@ lr_model = LR(solver='saga')
 - LR()对象属性及方法说明
 1.属性：
 coef_:  返回各特征的回归系数
-2.方法
+2.方法.
 fit(x):   代入数据集x进行训练
 predict(x): 输出样本数据x的类别标签
 predict_proba(x):  计算x的概率,返回的是一个N*K的二维列表，K为特征个数
