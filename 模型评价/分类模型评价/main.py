@@ -5,7 +5,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_breast_cancer
 
@@ -22,8 +22,13 @@ y_pred = SVC_model.predict(x_test)
 # 准确率
 print('准确率为：', accuracy_score(y_true=y_test, y_pred=y_pred))
 
+# 分类指标文本报告
+# 这里会给出两个f1分数（其他指标也给出两个），相当于把0和1（患与不患病）看为两个种类，分别计算了这两个种类的指标值
+# 最后对模型进行评价时，可以将这两个类别指标的平均值作为评价指标（如此时的平均f1分数为宏f1分数）
+print('分类指标文本报告：\n', classification_report(y_true=y_test, y_pred=y_pred))
+
 # 混淆矩阵
-print('混淆矩阵为：\n', classification_report(y_true=y_test, y_pred=y_pred))
+print('混淆矩阵：\n', confusion_matrix(y_true=y_test, y_pred=y_pred))
 
 # ROC曲线
 fpr, tpr, thresholds = roc_curve(y_test, y_pred)
