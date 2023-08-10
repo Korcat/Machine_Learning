@@ -18,7 +18,7 @@ x_train, x_test, y_train, y_test = train_test_split(x_std, y,
 kernel: 接收str，可选参数为：linear（线性）、poly（多项式）、rbf（高斯核）、sigmoid、precomputed或者一个自定义的核函数，默认为rbf
 gamma:  接收float,表示核函数为rbf、poly和sigmoid时的核函数系数，它是特征维数的倒数，默认为auto
 tol:    接收float,表示迭代停止的容忍度，即精度要求,默认为1e-3
-C:  float类型，正则化系数，默认为1.0
+C:  float类型，正则化系数，默认为1.0.C值越小，过拟合风险越高
 random_state:   随机数种子
 max_iter:   模型最大迭代次数
 """

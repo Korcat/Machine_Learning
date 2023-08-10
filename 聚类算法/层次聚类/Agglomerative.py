@@ -9,11 +9,10 @@ x = iris.data
 y = iris.target
 
 # 绘制树状图
-plt.figure(figsize=(20,6))
+plt.figure(figsize=(20, 6))
 Z = linkage(x, method='ward', metric='euclidean')
-p = dendrogram(Z, 0)
+p = dendrogram(Z, 0)  # 可以添加label：labels=my_labels
 plt.show()
-
 
 # 单链接层次聚类
 """
