@@ -1,5 +1,5 @@
 import numpy as np
-import xgboost as xgb
+import xgboost as xgb  # MachineLearning
 from sklearn.model_selection import RandomizedSearchCV
 
 # 导入训练数据

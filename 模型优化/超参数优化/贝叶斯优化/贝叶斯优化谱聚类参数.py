@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import SpectralClustering
 from sklearn.datasets import make_blobs
 from sklearn.metrics import calinski_harabasz_score
+import warnings
+warnings.filterwarnings("ignore")
 
 X, y = make_blobs(n_samples=500, n_features=6, centers=5, cluster_std=[0.4, 0.3, 0.4, 0.3, 0.4], random_state=11)
 plt.scatter(X[:, 0], X[:, 1], marker='o')

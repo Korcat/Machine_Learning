@@ -10,7 +10,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 参数解释：https://blog.csdn.net/qq_42479987/article/details/109549166
 """
 rf_model = RandomForestClassifier()
-"""
+"""        
 RandomForestClassifier()对象属性及方法
 https://blog.csdn.net/VariableX/article/details/107190275
 """

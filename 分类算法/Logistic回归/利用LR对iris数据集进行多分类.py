@@ -28,3 +28,8 @@ print(f'二分类的预测准确度为：{lr2.score(x_test, y_test)}')
 print(f'二分类前十个的预测结果为：{lr2.predict(x_test[:10])}')
 print(f'二分类前十个的实际结果为：{y_test[:10]}')
 print(f'二分类前十个预测概率为：{lr2.predict_proba(x_test[:10])}')
+print("=======================================================")
+# 都有三个方程的回归系数
+print(lr1.coef_)
+print("==============================")
+print(lr2.coef_)

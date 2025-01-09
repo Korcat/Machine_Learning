@@ -58,7 +58,7 @@ feature_name = wine.feature_names
 dot_data = tree.export_graphviz(clf  # 训练好的模型
                                 , out_file=None
                                 , feature_names=feature_name
-                                , class_names=["琴酒", "雪莉", "贝尔摩德"]
+                                , class_names=["琴酒", "雪莉", "贝尔摩德"]  # 这里的名字应为对应编码的名字，如琴酒-0，雪莉-1，贝尔摩德-2
                                 , filled=True  # 进行颜色填充
                                 , rounded=True  # 树节点的形状控制
                                 )

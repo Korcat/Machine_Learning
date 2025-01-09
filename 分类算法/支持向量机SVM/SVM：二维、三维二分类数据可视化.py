@@ -1,5 +1,6 @@
 """
 不能用于二分类以上的数据可视化
+极限直线是指距离两个不同类别的支持向量最近的直线，当存在异常值或噪声时，极限直线可以提供更强的鲁棒性。
 """
 import matplotlib.pyplot as plt
 import numpy as np
@@ -38,14 +39,16 @@ clf.fit(train_set, train_set_label)
 def plot_hyperplane(svc, dataset, label,
                     scatter_color=['deepskyblue', 'orange'],
                     plane_color=['mediumpurple', 'violet']):
-    ''' 二分类 SVM 可视化
+    '''
+        二分类 SVM 可视化
         svc: 线性支持向量机实例
         dataset: 数据集, [n_sample, n_dim]
         label: 数据标签, [n_sample, ],取值为0或1
         scatter_color: 负样本、正样本散点颜色
-        plane_color: 分界超平面、极端超平面颜色'''
+        plane_color: 分界超平面、极端超平面颜色
+    '''
     # 读取超平面参数
-    coef, bias = svc.coef_[0], svc.intercept_[0]
+    coef, bias = svc.coef_[0], svc.intercept_[0]  # coef是标准直线方程的系数
     # 各个维度的上下限
     n_dim = len(coef)
     limit = np.array([(dataset[:, i].min(), dataset[:, i].max())
@@ -77,7 +80,7 @@ def plot_hyperplane(svc, dataset, label,
             plt.plot(x, y, color=plane_color[0])
         # 绘制极端直线
         if plane_color[1]:
-            for b_ in [-1, 1]:
+            for b_ in [-1, 1]:  # 极端直线是1和-1
                 y = cal_y(x, bias + b_)
                 plt.plot(x, y, color=plane_color[1], linestyle='--')
         # 裁剪画布边界

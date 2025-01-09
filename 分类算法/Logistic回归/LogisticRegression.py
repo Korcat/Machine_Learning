@@ -25,31 +25,31 @@ C:  float类型，正则化系数，默认为1.0
 random_state:   随机数种子
 solver: 接收str，可选参数为：newton-cg(牛顿法)、lbfgs(拟牛顿法)、liblinear(坐标轴下降法)、sag(随机平均梯度下降)、saga(线性收敛的随机优化算法)
 max_iter:   模型最大迭代次数
-multi_class:    接收str,为“ovr”时为二分类。为“multinomial”时为多分类
+multi_class:    接收str,为“ovr”时，为二分类（即One-vs-Rest，将本类视为正类，其他所有类视为负类；其可拓展到多分类），\
+    为“multinomial”时为多分类(使用softmax)
 """
 # 构建LR()模型
-lr_model = LR(solver='saga')
+lr_model = LR(solver='sag')
 """
 - LR()对象属性及方法说明
 1.属性：
-coef_:  返回各特征的回归系数
+coef_:  返回各特征的回归系数,经过验证可以直接写出逻辑回归方程，模型形式参考博客：https://blog.csdn.net/Gamer_gyt/article/details/85209496
 2.方法.
 fit(x):   代入数据集x进行训练
 predict(x): 输出样本数据x的类别标签
-predict_proba(x):  计算x的概率,返回的是一个N*K的二维列表，K为特征个数
+predict_proba(x):  计算x的概率,返回的是一个N*K的二维列表，K为类别个数
 score(x,y): 返回测试数据集的平均准确度，x为特征数据集，y为x对应的真实标签
 decision_function(x):   样本的置信度
 """
 # 训练Logistic回归模型
 lr_model.fit(x_trainStd, y_train)
 print('训练出来的LogisticRegression模型为：\n', lr_model)
-print('各特征的相关系数为：\n', lr_model.coef_)
+print('各特征的相关系数为：\n', lr_model.coef_)  # 由于为二分类，因此只有正类的回归系数
 print('预测测试集前10个结果为：\n', lr_model.predict(x_testStd)[: 10])
 print('测试集准确率为：', lr_model.score(x_testStd, y_test))
 print('测试集前3个对应类别的概率为：\n', lr_model.predict_proba(x_testStd)[: 3])
-print('测试集前3个对应类别的概率的log值为：\n',
+print('测试集前3个对应类别的概率的ln值为：\n',
       lr_model.predict_log_proba(x_testStd)[: 3])
 print('测试集前3个的决策函数值为：\n',
       lr_model.decision_function(x_testStd)[: 3])
 print('模型的参数为：\n', lr_model.get_params())
-

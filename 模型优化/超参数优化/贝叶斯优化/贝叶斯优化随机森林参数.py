@@ -1,5 +1,5 @@
 from sklearn.ensemble import RandomForestRegressor
-from bayes_opt import BayesianOptimization
+from bayes_opt import BayesianOptimization  # pytorch
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
